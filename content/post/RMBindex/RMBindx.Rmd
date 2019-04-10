@@ -1,8 +1,8 @@
 ---
-title: "人民币“一带一路”影响力指数"
-author: "课题组"
+title: "人民币国际影响力指数"
+author: ""
 date: 2019-04-01T21:13:14-05:00
-categories: ["R"]
+#categories: ["R"] 
 #tags: ["R Markdown", "plot", "regression"]
 ---
 
@@ -26,7 +26,7 @@ if(1){
   names(ts) <- c("沿线国家货币","参与国货币","参与国货币+欧元")
   ###################################
   dy.colors <- c("red","blue","green")
-  dygraph(data = ts , main = " ",width=800,height=400) %>%
+dygraph(data = ts , main = " ",width=800,height=400) %>%
     dyRangeSelector(dateWindow = c("2009-01-01", "2019-04-01"), height = 20)  %>%#valueRange = c(min(data)-4, max(data)+4)
     dyAxis("y", label = " ") %>%
     dyOptions(axisLineWidth = 1.5, axisLineColor = "black", gridLineColor = "lightblue", colors = dy.colors, strokeWidth = 2) %>%

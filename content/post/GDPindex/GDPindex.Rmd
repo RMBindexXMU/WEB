@@ -1,0 +1,77 @@
+---
+title: "中国GDP影响力指数"
+author: ""
+date: 2019-04-01T21:13:14-05:00
+#categories: ["R"] 
+#tags: ["R Markdown", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+library(dygraphs)
+library(xts)
+load(file = "data/Rdata/latex_index_i_web.Rdata")
+```
+
+```{r, echo=FALSE}
+#,eval=F
+knitr::opts_chunk$set(warning = FALSE)
+if(1){
+  dy.colors <- c("red","blue","green")
+  ###################################
+  # here load data needed to be drawn【ts】
+  ###################################
+  ts <- data 
+  ts <- ts["2009-01-01/"]#ts <- rollmean(ts,k=30) * 100
+  names(ts) <- c("沿线国家货币","参与国货币","参与国货币+欧元")
+  ###################################
+  dy.colors <- c("red","blue","green")
+dygraph(data = ts , main = " ",width=800,height=400) %>%
+    dyRangeSelector(dateWindow = c("2009-01-01", "2019-04-01"), height = 20)  %>%#valueRange = c(min(data)-4, max(data)+4)
+    dyAxis("y", label = " ") %>%
+    dyOptions(axisLineWidth = 1.5, axisLineColor = "black", gridLineColor = "lightblue", colors = dy.colors, strokeWidth = 2) %>%
+    
+    dyLegend(show = "auto", hideOnMouseOut = TRUE, width = 500, labelsSeparateLines = FALSE) %>%
+    dyHighlight(highlightCircleSize = 4, 
+                highlightSeriesBackgroundAlpha = 0.7,
+                hideOnMouseOut = TRUE,
+                highlightSeriesOpts = list(strokeWidth = 2.5)) %>%
+    
+    dyEvent("2005-07-21", "2005.7.21:中国实行有管理的浮动汇率制", labelLoc = "bottom") %>%
+    dyEvent("2008-09-14", "1", labelLoc = "bottom") %>%#2008.9.14:雷曼兄弟破产
+    #dyEvent("2008-11-25", "2008.11.25:美国量化宽松Q1", labelLoc = "bottom") %>%
+    dyEvent("2010-06-19", "2010.6.19:增强人民币汇率弹性", labelLoc = "bottom") %>%
+    #dyEvent("2010-11-4", "2010.11.4:美国量化宽松Q2", labelLoc = "bottom") %>%
+    #dyEvent("2012-09-14", "2012.9.14:美国量化宽松Q3", labelLoc = "bottom") %>%
+    #dyEvent("2012-12-13", "2012.12.13:美国量化宽松Q4", labelLoc = "bottom") %>%
+    dyEvent("2015-08-11", "2015.8.11:中国中间价改革", labelLoc = "bottom") %>%
+    #dyEvent("2015-12-16", "2015.12.16:美联储加息", labelLoc = "bottom") %>%
+    dyEvent("2016-06-24", "2016.6.24:英国脱欧", labelLoc = "bottom") %>%
+    #dyEvent("2017-01-24", "2017.1.24:中国央行时隔六年首次提升MLF政策利率", labelLoc = "bottom") %>%
+    #dyEvent("2017-01-20", "2017.1.20:特朗普宣誓就职", labelLoc = "bottom") %>%
+    #dyEvent("2017-02-03", "2017.2.3:央行上调逆回购利率", labelLoc = "bottom") %>%
+    #dyEvent("2017-03-15", "2017.3.15:美联储宣布加息25个基点", labelLoc = "bottom") %>%
+    #dyEvent("2013-09-07", "2013.9.7:首次提出“丝绸之路经济带”", labelLoc = "bottom") %>%
+    #dyEvent("2013-10-03", "2013.10.3:首次提出21世纪“海上丝绸之路”", labelLoc = "bottom") %>%
+    dyEvent("2013-10-03","2013.9/2013.10:分别首次提出“丝绸之路经济带”和“海上丝绸之路”", labelLoc = "bottom") %>%
+    #dyEvent("2014-03-05", "2014.3.5:《政府工作报告》提出，抓紧规划建设丝绸之路经济带、21世纪海上丝绸之路", labelLoc = "bottom") %>%
+    #dyEvent("2014-12-29", "2014.12.29:成立丝路基金", labelLoc = "bottom") %>%
+    #dyEvent("2015-03-28", "2015.3.28:发布愿景与行动文件", labelLoc = "bottom") %>%
+    #dyEvent("2015-11-01", "2015.11:31个省区市对接方案基本完成件", labelLoc = "bottom") %>%
+    dyEvent("2015-12-25", "2015.12.25:成立亚投行", labelLoc = "bottom") %>%
+    #dyEvent("2016-04-11", "2016.4.11:我国与国际组织签署首份一带一路合作文件", labelLoc = "bottom") %>%
+    #dyEvent("2016-08-17", "2016.8.17:召开推进“一带一路”建设工作座谈会", labelLoc = "bottom") %>%
+    #dyEvent("2016-11-17", "2016.11.17:“一带一路”倡议首次写入联合国大会决议", labelLoc = "bottom") %>%
+    dyEvent("2017-05-14", "2017.5.14:召开“一带一路”高峰论坛", labelLoc = "bottom") %>%
+    dyEvent("2017-09-06", "2017.9.8:外汇风险准备金下调至0", labelLoc = "bottom") %>%
+    dyEvent("2018-08-06", "2018.08.6:外汇风险准备金从0调整到20%", labelLoc = "bottom")
+}
+```
+
+<br>
+
+### 经济含义：
+
+该指数具有明确的经济含义，表示人民币汇率变动率提高一单位造成的其它国家货币汇率的平均净变动幅度，衡量了人民币汇率带动“一带一路”区域主要货币汇率同向变动的能力。
+
+
