@@ -10,7 +10,8 @@ date: 2019-04-01T21:13:14-05:00
 knitr::opts_chunk$set(collapse = TRUE)
 library(dygraphs)
 library(xts)
-load(file = "data/Rdata/latex_index_i_web.Rdata")
+load(file = "web_g20_index.Rdata")
+data[,2]["/2011-10-18"] <- NA
 ```
 
 ```{r, echo=FALSE}
@@ -22,12 +23,12 @@ if(1){
   # here load data needed to be drawn【ts】
   ###################################
   ts <- data 
-  ts <- ts["2009-01-01/"]#ts <- rollmean(ts,k=30) * 100
-  names(ts) <- c("沿线国家货币","参与国货币","参与国货币+欧元")
+  ts <- ts["2005-01-01/"]#ts <- rollmean(ts,k=30) * 100
+  names(ts) <- c("在岸人民币","离岸人民币","人民币中间价")
   ###################################
   dy.colors <- c("red","blue","green")
 dygraph(data = ts , main = " ",width=800,height=400) %>%
-    dyRangeSelector(dateWindow = c("2009-01-01", "2019-04-01"), height = 20)  %>%#valueRange = c(min(data)-4, max(data)+4)
+    dyRangeSelector(dateWindow = c("2005-08-01", "2019-04-01"), height = 20)  %>%#valueRange = c(min(data)-4, max(data)+4)
     dyAxis("y", label = " ") %>%
     dyOptions(axisLineWidth = 1.5, axisLineColor = "black", gridLineColor = "lightblue", colors = dy.colors, strokeWidth = 2) %>%
     
@@ -38,7 +39,7 @@ dygraph(data = ts , main = " ",width=800,height=400) %>%
                 highlightSeriesOpts = list(strokeWidth = 2.5)) %>%
     
     dyEvent("2005-07-21", "2005.7.21:中国实行有管理的浮动汇率制", labelLoc = "bottom") %>%
-    dyEvent("2008-09-14", "1", labelLoc = "bottom") %>%#2008.9.14:雷曼兄弟破产
+    dyEvent("2008-09-14", "2008.9.14:雷曼兄弟破产", labelLoc = "bottom") %>%#
     #dyEvent("2008-11-25", "2008.11.25:美国量化宽松Q1", labelLoc = "bottom") %>%
     dyEvent("2010-06-19", "2010.6.19:增强人民币汇率弹性", labelLoc = "bottom") %>%
     #dyEvent("2010-11-4", "2010.11.4:美国量化宽松Q2", labelLoc = "bottom") %>%

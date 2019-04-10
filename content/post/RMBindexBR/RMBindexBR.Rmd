@@ -10,7 +10,7 @@ date: 2019-04-01T21:13:14-05:00
 knitr::opts_chunk$set(collapse = TRUE)
 library(dygraphs)
 library(xts)
-load(file = "data/Rdata/latex_index_i_web.Rdata")
+load(file = "web_RMB_indexBR.Rdata")
 ```
 
 ```{r, echo=FALSE}

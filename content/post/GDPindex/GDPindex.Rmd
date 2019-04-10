@@ -10,7 +10,7 @@ date: 2019-04-01T21:13:14-05:00
 knitr::opts_chunk$set(collapse = TRUE)
 library(dygraphs)
 library(xts)
-load(file = "data/Rdata/latex_index_i_web.Rdata")
+load(file = "web_GDP_index.Rdata")
 ```
 
 ```{r, echo=FALSE}
@@ -22,12 +22,12 @@ if(1){
   # here load data needed to be drawn【ts】
   ###################################
   ts <- data 
-  ts <- ts["2009-01-01/"]#ts <- rollmean(ts,k=30) * 100
-  names(ts) <- c("沿线国家货币","参与国货币","参与国货币+欧元")
+  #ts <- ts["2012-09-01/"]#ts <- rollmean(ts,k=30) * 100
+  names(ts) <- c("23国","37国")
   ###################################
   dy.colors <- c("red","blue","green")
-dygraph(data = ts , main = " ",width=800,height=400) %>%
-    dyRangeSelector(dateWindow = c("2009-01-01", "2019-04-01"), height = 20)  %>%#valueRange = c(min(data)-4, max(data)+4)
+dygraph(data = ts , main = " ",width=700,height=400) %>%
+    dyRangeSelector(dateWindow = c("2012-09-01", "2019-04-01"), height = 20)  %>%#valueRange = c(min(data)-4, max(data)+4)
     dyAxis("y", label = " ") %>%
     dyOptions(axisLineWidth = 1.5, axisLineColor = "black", gridLineColor = "lightblue", colors = dy.colors, strokeWidth = 2) %>%
     
@@ -53,7 +53,7 @@ dygraph(data = ts , main = " ",width=800,height=400) %>%
     #dyEvent("2017-03-15", "2017.3.15:美联储宣布加息25个基点", labelLoc = "bottom") %>%
     #dyEvent("2013-09-07", "2013.9.7:首次提出“丝绸之路经济带”", labelLoc = "bottom") %>%
     #dyEvent("2013-10-03", "2013.10.3:首次提出21世纪“海上丝绸之路”", labelLoc = "bottom") %>%
-    dyEvent("2013-10-03","2013.9/2013.10:分别首次提出“丝绸之路经济带”和“海上丝绸之路”", labelLoc = "bottom") %>%
+    dyEvent("2013-10-03","提出“一带一路”倡议", labelLoc = "bottom") %>%
     #dyEvent("2014-03-05", "2014.3.5:《政府工作报告》提出，抓紧规划建设丝绸之路经济带、21世纪海上丝绸之路", labelLoc = "bottom") %>%
     #dyEvent("2014-12-29", "2014.12.29:成立丝路基金", labelLoc = "bottom") %>%
     #dyEvent("2015-03-28", "2015.3.28:发布愿景与行动文件", labelLoc = "bottom") %>%
